@@ -1,0 +1,17 @@
+C:\Users\ADMIN\source\repos\AD1\AD1\bin\Debug\AD1.exe.config
+C:\Users\ADMIN\source\repos\AD1\AD1\bin\Debug\AD1.exe
+C:\Users\ADMIN\source\repos\AD1\AD1\bin\Debug\AD1.pdb
+C:\Users\ADMIN\source\repos\AD1\AD1\bin\Debug\EntityFramework.dll
+C:\Users\ADMIN\source\repos\AD1\AD1\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ADMIN\source\repos\AD1\AD1\bin\Debug\EntityFramework.xml
+C:\Users\ADMIN\source\repos\AD1\AD1\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ADMIN\source\repos\AD1\AD1\obj\Debug\AD1.csproj.AssemblyReference.cache
+C:\Users\ADMIN\source\repos\AD1\AD1\obj\Debug\AD1.csproj.SuggestedBindingRedirects.cache
+C:\Users\ADMIN\source\repos\AD1\AD1\obj\Debug\AD1.Form1.resources
+C:\Users\ADMIN\source\repos\AD1\AD1\obj\Debug\AD1.Form2.resources
+C:\Users\ADMIN\source\repos\AD1\AD1\obj\Debug\AD1.Properties.Resources.resources
+C:\Users\ADMIN\source\repos\AD1\AD1\obj\Debug\AD1.csproj.GenerateResource.cache
+C:\Users\ADMIN\source\repos\AD1\AD1\obj\Debug\AD1.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\source\repos\AD1\AD1\obj\Debug\AD1.csproj.CopyComplete
+C:\Users\ADMIN\source\repos\AD1\AD1\obj\Debug\AD1.exe
+C:\Users\ADMIN\source\repos\AD1\AD1\obj\Debug\AD1.pdb
