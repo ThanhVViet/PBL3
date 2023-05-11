@@ -1,0 +1,879 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QuanLiQuanNetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_category_name" Type="nvarchar" MaxLength="45" />
+          <Property Name="image_category" Type="image" />
+        </EntityType>
+        <EntityType Name="computer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="active_status" Type="bit" />
+          <Property Name="ip" Type="nvarchar" MaxLength="50" />
+          <Property Name="num_com" Type="nvarchar" MaxLength="50" />
+          <Property Name="manufacturer" Type="nvarchar" MaxLength="45" />
+          <Property Name="warranty" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customer_name" Type="nvarchar" MaxLength="255" />
+          <Property Name="remaining_time" Type="nvarchar" MaxLength="255" />
+          <Property Name="user_name" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="employee_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="date_of_birth" Type="date" />
+          <Property Name="phone" Type="nvarchar" MaxLength="10" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="image_nv" Type="image" />
+          <Property Name="user_name" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="game">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="game_category_id" Type="int" Nullable="false" />
+          <Property Name="game_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="played_times" Type="int" Nullable="false" />
+          <Property Name="path" Type="varchar" MaxLength="199" />
+          <Property Name="image_url" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="game_category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="game_category_name" Type="nvarchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="news">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="category_id" Type="int" />
+          <Property Name="title" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="image_url" Type="image" Nullable="false" />
+          <Property Name="content" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="create_date" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="payment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="total_bill" Type="int" />
+          <Property Name="record_id" Type="int" />
+          <Property Name="payment_time" Type="datetime" />
+          <Property Name="cash_given" Type="int" />
+          <Property Name="cash_return" Type="int" />
+        </EntityType>
+        <EntityType Name="payment_detail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_id" Type="int" />
+          <Property Name="payment_id" Type="int" />
+          <Property Name="product_quantity" Type="int" />
+          <Property Name="total" Type="int" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="quantity" Type="int" />
+          <Property Name="prices" Type="int" />
+          <Property Name="image_url" Type="image" />
+          <Property Name="id_product_category" Type="int" />
+        </EntityType>
+        <EntityType Name="record">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customer_id" Type="int" />
+          <Property Name="computer_id" Type="int" />
+          <Property Name="start_time" Type="datetime" />
+          <Property Name="end_time" Type="datetime" />
+        </EntityType>
+        <EntityType Name="user_role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_name" Type="nvarchar" MaxLength="255" />
+          <Property Name="role_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="user_name" />
+          </Key>
+          <Property Name="user_name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="user_password" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="worktime">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="employee_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="daywork" Type="date" />
+          <Property Name="start_time" Type="nvarchar" MaxLength="50" />
+          <Property Name="end_time" Type="nvarchar" MaxLength="50" />
+          <Property Name="salary" Type="int" />
+          <Property Name="image_nv" Type="image" />
+          <Property Name="user_name" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <Association Name="FK__customer__user_n__3C69FB99">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="customer" Type="Self.customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="user_name" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="user_name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__employee__user_n__4BAC3F29">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="employee" Type="Self.employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="user_name" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="user_name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__game__game_categ__440B1D61">
+          <End Role="game_category" Type="Self.game_category" Multiplicity="1" />
+          <End Role="game" Type="Self.game" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="game_category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="game">
+              <PropertyRef Name="game_category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__news__category_i__412EB0B6">
+          <End Role="game_category" Type="Self.game_category" Multiplicity="0..1" />
+          <End Role="news" Type="Self.news" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="game_category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="news">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__payment__record___5AEE82B9">
+          <End Role="record" Type="Self.record" Multiplicity="0..1" />
+          <End Role="payment" Type="Self.payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="record">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="payment">
+              <PropertyRef Name="record_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__payment_d__produ__5812160E">
+          <End Role="product" Type="Self.product" Multiplicity="0..1" />
+          <End Role="payment_detail" Type="Self.payment_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="payment_detail">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__product__id_prod__48CFD27E">
+          <End Role="category" Type="Self.category" Multiplicity="0..1" />
+          <End Role="product" Type="Self.product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="product">
+              <PropertyRef Name="id_product_category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__record__computer__5535A963">
+          <End Role="computer" Type="Self.computer" Multiplicity="0..1" />
+          <End Role="record" Type="Self.record" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="computer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="record">
+              <PropertyRef Name="computer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__record__customer__5441852A">
+          <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+          <End Role="record" Type="Self.record" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="record">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__user_role__role___398D8EEE">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="user_role" Type="Self.user_role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="user_name" />
+            </Principal>
+            <Dependent Role="user_role">
+              <PropertyRef Name="user_name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__worktime__user_n__4E88ABD4">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="worktime" Type="Self.worktime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="user_name" />
+            </Principal>
+            <Dependent Role="worktime">
+              <PropertyRef Name="user_name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QuanLiQuanNetModelStoreContainer">
+          <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="computer" EntityType="Self.computer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="customer" EntityType="Self.customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="employee" EntityType="Self.employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="game" EntityType="Self.game" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="game_category" EntityType="Self.game_category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="news" EntityType="Self.news" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="payment" EntityType="Self.payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="payment_detail" EntityType="Self.payment_detail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="product" EntityType="Self.product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="record" EntityType="Self.record" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user_role" EntityType="Self.user_role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="worktime" EntityType="Self.worktime" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__customer__user_n__3C69FB99" Association="Self.FK__customer__user_n__3C69FB99">
+            <End Role="users" EntitySet="users" />
+            <End Role="customer" EntitySet="customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__employee__user_n__4BAC3F29" Association="Self.FK__employee__user_n__4BAC3F29">
+            <End Role="users" EntitySet="users" />
+            <End Role="employee" EntitySet="employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__game__game_categ__440B1D61" Association="Self.FK__game__game_categ__440B1D61">
+            <End Role="game_category" EntitySet="game_category" />
+            <End Role="game" EntitySet="game" />
+          </AssociationSet>
+          <AssociationSet Name="FK__news__category_i__412EB0B6" Association="Self.FK__news__category_i__412EB0B6">
+            <End Role="game_category" EntitySet="game_category" />
+            <End Role="news" EntitySet="news" />
+          </AssociationSet>
+          <AssociationSet Name="FK__payment__record___5AEE82B9" Association="Self.FK__payment__record___5AEE82B9">
+            <End Role="record" EntitySet="record" />
+            <End Role="payment" EntitySet="payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__payment_d__produ__5812160E" Association="Self.FK__payment_d__produ__5812160E">
+            <End Role="product" EntitySet="product" />
+            <End Role="payment_detail" EntitySet="payment_detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__product__id_prod__48CFD27E" Association="Self.FK__product__id_prod__48CFD27E">
+            <End Role="category" EntitySet="category" />
+            <End Role="product" EntitySet="product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__record__computer__5535A963" Association="Self.FK__record__computer__5535A963">
+            <End Role="computer" EntitySet="computer" />
+            <End Role="record" EntitySet="record" />
+          </AssociationSet>
+          <AssociationSet Name="FK__record__customer__5441852A" Association="Self.FK__record__customer__5441852A">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="record" EntitySet="record" />
+          </AssociationSet>
+          <AssociationSet Name="FK__user_role__role___398D8EEE" Association="Self.FK__user_role__role___398D8EEE">
+            <End Role="users" EntitySet="users" />
+            <End Role="user_role" EntitySet="user_role" />
+          </AssociationSet>
+          <AssociationSet Name="FK__worktime__user_n__4E88ABD4" Association="Self.FK__worktime__user_n__4E88ABD4">
+            <End Role="users" EntitySet="users" />
+            <End Role="worktime" EntitySet="worktime" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QuanLiQuanNetModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_category_name" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="image_category" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="products" Relationship="Self.FK__product__id_prod__48CFD27E" FromRole="category" ToRole="product" />
+        </EntityType>
+        <EntityType Name="computer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="active_status" Type="Boolean" />
+          <Property Name="ip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="num_com" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="manufacturer" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="warranty" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="records" Relationship="Self.FK__record__computer__5535A963" FromRole="computer" ToRole="record" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customer_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="remaining_time" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="user_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="user" Relationship="Self.FK__customer__user_n__3C69FB99" FromRole="customer" ToRole="users" />
+          <NavigationProperty Name="records" Relationship="Self.FK__record__customer__5441852A" FromRole="customer" ToRole="record" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="employee_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="date_of_birth" Type="DateTime" Precision="0" />
+          <Property Name="phone" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="image_nv" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="user_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="user" Relationship="Self.FK__employee__user_n__4BAC3F29" FromRole="employee" ToRole="users" />
+        </EntityType>
+        <EntityType Name="game">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="game_category_id" Type="Int32" Nullable="false" />
+          <Property Name="game_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="played_times" Type="Int32" Nullable="false" />
+          <Property Name="path" Type="String" MaxLength="199" FixedLength="false" Unicode="false" />
+          <Property Name="image_url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="game_category" Relationship="Self.FK__game__game_categ__440B1D61" FromRole="game" ToRole="game_category" />
+        </EntityType>
+        <EntityType Name="game_category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="game_category_name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="games" Relationship="Self.FK__game__game_categ__440B1D61" FromRole="game_category" ToRole="game" />
+          <NavigationProperty Name="news" Relationship="Self.FK__news__category_i__412EB0B6" FromRole="game_category" ToRole="news" />
+        </EntityType>
+        <EntityType Name="news">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="category_id" Type="Int32" />
+          <Property Name="title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="image_url" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="content" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="game_category" Relationship="Self.FK__news__category_i__412EB0B6" FromRole="news" ToRole="game_category" />
+        </EntityType>
+        <EntityType Name="payment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="total_bill" Type="Int32" />
+          <Property Name="record_id" Type="Int32" />
+          <Property Name="payment_time" Type="DateTime" Precision="3" />
+          <Property Name="cash_given" Type="Int32" />
+          <Property Name="cash_return" Type="Int32" />
+          <NavigationProperty Name="record" Relationship="Self.FK__payment__record___5AEE82B9" FromRole="payment" ToRole="record" />
+        </EntityType>
+        <EntityType Name="payment_detail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_id" Type="Int32" />
+          <Property Name="payment_id" Type="Int32" />
+          <Property Name="product_quantity" Type="Int32" />
+          <Property Name="total" Type="Int32" />
+          <NavigationProperty Name="product" Relationship="Self.FK__payment_d__produ__5812160E" FromRole="payment_detail" ToRole="product" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="quantity" Type="Int32" />
+          <Property Name="prices" Type="Int32" />
+          <Property Name="image_url" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="id_product_category" Type="Int32" />
+          <NavigationProperty Name="category" Relationship="Self.FK__product__id_prod__48CFD27E" FromRole="product" ToRole="category" />
+          <NavigationProperty Name="payment_detail" Relationship="Self.FK__payment_d__produ__5812160E" FromRole="product" ToRole="payment_detail" />
+        </EntityType>
+        <EntityType Name="record">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customer_id" Type="Int32" />
+          <Property Name="computer_id" Type="Int32" />
+          <Property Name="start_time" Type="DateTime" Precision="3" />
+          <Property Name="end_time" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="computer" Relationship="Self.FK__record__computer__5535A963" FromRole="record" ToRole="computer" />
+          <NavigationProperty Name="customer" Relationship="Self.FK__record__customer__5441852A" FromRole="record" ToRole="customer" />
+          <NavigationProperty Name="payments" Relationship="Self.FK__payment__record___5AEE82B9" FromRole="record" ToRole="payment" />
+        </EntityType>
+        <EntityType Name="user_role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="role_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="user" Relationship="Self.FK__user_role__role___398D8EEE" FromRole="user_role" ToRole="users" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="user_name" />
+          </Key>
+          <Property Name="user_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="user_password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="customers" Relationship="Self.FK__customer__user_n__3C69FB99" FromRole="users" ToRole="customer" />
+          <NavigationProperty Name="employees" Relationship="Self.FK__employee__user_n__4BAC3F29" FromRole="users" ToRole="employee" />
+          <NavigationProperty Name="user_role" Relationship="Self.FK__user_role__role___398D8EEE" FromRole="users" ToRole="user_role" />
+          <NavigationProperty Name="worktimes" Relationship="Self.FK__worktime__user_n__4E88ABD4" FromRole="users" ToRole="worktime" />
+        </EntityType>
+        <EntityType Name="worktime">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="employee_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="daywork" Type="DateTime" Precision="0" />
+          <Property Name="start_time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="end_time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="salary" Type="Int32" />
+          <Property Name="image_nv" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="user_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="user" Relationship="Self.FK__worktime__user_n__4E88ABD4" FromRole="worktime" ToRole="users" />
+        </EntityType>
+        <Association Name="FK__product__id_prod__48CFD27E">
+          <End Role="category" Type="Self.category" Multiplicity="0..1" />
+          <End Role="product" Type="Self.product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="product">
+              <PropertyRef Name="id_product_category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__record__computer__5535A963">
+          <End Role="computer" Type="Self.computer" Multiplicity="0..1" />
+          <End Role="record" Type="Self.record" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="computer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="record">
+              <PropertyRef Name="computer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__customer__user_n__3C69FB99">
+          <End Role="users" Type="Self.user" Multiplicity="0..1" />
+          <End Role="customer" Type="Self.customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="user_name" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="user_name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__record__customer__5441852A">
+          <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+          <End Role="record" Type="Self.record" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="record">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__employee__user_n__4BAC3F29">
+          <End Role="users" Type="Self.user" Multiplicity="0..1" />
+          <End Role="employee" Type="Self.employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="user_name" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="user_name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__game__game_categ__440B1D61">
+          <End Role="game_category" Type="Self.game_category" Multiplicity="1" />
+          <End Role="game" Type="Self.game" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="game_category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="game">
+              <PropertyRef Name="game_category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__news__category_i__412EB0B6">
+          <End Role="game_category" Type="Self.game_category" Multiplicity="0..1" />
+          <End Role="news" Type="Self.news" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="game_category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="news">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__payment__record___5AEE82B9">
+          <End Role="record" Type="Self.record" Multiplicity="0..1" />
+          <End Role="payment" Type="Self.payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="record">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="payment">
+              <PropertyRef Name="record_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__payment_d__produ__5812160E">
+          <End Role="product" Type="Self.product" Multiplicity="0..1" />
+          <End Role="payment_detail" Type="Self.payment_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="payment_detail">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__user_role__role___398D8EEE">
+          <End Role="users" Type="Self.user" Multiplicity="0..1" />
+          <End Role="user_role" Type="Self.user_role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="user_name" />
+            </Principal>
+            <Dependent Role="user_role">
+              <PropertyRef Name="user_name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__worktime__user_n__4E88ABD4">
+          <End Role="users" Type="Self.user" Multiplicity="0..1" />
+          <End Role="worktime" Type="Self.worktime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="user_name" />
+            </Principal>
+            <Dependent Role="worktime">
+              <PropertyRef Name="user_name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QuanLiQuanNetEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="categories" EntityType="Self.category" />
+          <EntitySet Name="computers" EntityType="Self.computer" />
+          <EntitySet Name="customers" EntityType="Self.customer" />
+          <EntitySet Name="employees" EntityType="Self.employee" />
+          <EntitySet Name="games" EntityType="Self.game" />
+          <EntitySet Name="game_category" EntityType="Self.game_category" />
+          <EntitySet Name="news" EntityType="Self.news" />
+          <EntitySet Name="payments" EntityType="Self.payment" />
+          <EntitySet Name="payment_detail" EntityType="Self.payment_detail" />
+          <EntitySet Name="products" EntityType="Self.product" />
+          <EntitySet Name="records" EntityType="Self.record" />
+          <EntitySet Name="user_role" EntityType="Self.user_role" />
+          <EntitySet Name="users" EntityType="Self.user" />
+          <EntitySet Name="worktimes" EntityType="Self.worktime" />
+          <AssociationSet Name="FK__product__id_prod__48CFD27E" Association="Self.FK__product__id_prod__48CFD27E">
+            <End Role="category" EntitySet="categories" />
+            <End Role="product" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__record__computer__5535A963" Association="Self.FK__record__computer__5535A963">
+            <End Role="computer" EntitySet="computers" />
+            <End Role="record" EntitySet="records" />
+          </AssociationSet>
+          <AssociationSet Name="FK__customer__user_n__3C69FB99" Association="Self.FK__customer__user_n__3C69FB99">
+            <End Role="users" EntitySet="users" />
+            <End Role="customer" EntitySet="customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__record__customer__5441852A" Association="Self.FK__record__customer__5441852A">
+            <End Role="customer" EntitySet="customers" />
+            <End Role="record" EntitySet="records" />
+          </AssociationSet>
+          <AssociationSet Name="FK__employee__user_n__4BAC3F29" Association="Self.FK__employee__user_n__4BAC3F29">
+            <End Role="users" EntitySet="users" />
+            <End Role="employee" EntitySet="employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__game__game_categ__440B1D61" Association="Self.FK__game__game_categ__440B1D61">
+            <End Role="game_category" EntitySet="game_category" />
+            <End Role="game" EntitySet="games" />
+          </AssociationSet>
+          <AssociationSet Name="FK__news__category_i__412EB0B6" Association="Self.FK__news__category_i__412EB0B6">
+            <End Role="game_category" EntitySet="game_category" />
+            <End Role="news" EntitySet="news" />
+          </AssociationSet>
+          <AssociationSet Name="FK__payment__record___5AEE82B9" Association="Self.FK__payment__record___5AEE82B9">
+            <End Role="record" EntitySet="records" />
+            <End Role="payment" EntitySet="payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__payment_d__produ__5812160E" Association="Self.FK__payment_d__produ__5812160E">
+            <End Role="product" EntitySet="products" />
+            <End Role="payment_detail" EntitySet="payment_detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__user_role__role___398D8EEE" Association="Self.FK__user_role__role___398D8EEE">
+            <End Role="users" EntitySet="users" />
+            <End Role="user_role" EntitySet="user_role" />
+          </AssociationSet>
+          <AssociationSet Name="FK__worktime__user_n__4E88ABD4" Association="Self.FK__worktime__user_n__4E88ABD4">
+            <End Role="users" EntitySet="users" />
+            <End Role="worktime" EntitySet="worktimes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QuanLiQuanNetModelStoreContainer" CdmEntityContainer="QuanLiQuanNetEntities">
+          <EntitySetMapping Name="categories">
+            <EntityTypeMapping TypeName="QuanLiQuanNetModel.category">
+              <MappingFragment StoreEntitySet="category">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="product_category_name" ColumnName="product_category_name" />
+                <ScalarProperty Name="image_category" ColumnName="image_category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="computers">
+            <EntityTypeMapping TypeName="QuanLiQuanNetModel.computer">
+              <MappingFragment StoreEntitySet="computer">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="active_status" ColumnName="active_status" />
+                <ScalarProperty Name="ip" ColumnName="ip" />
+                <ScalarProperty Name="num_com" ColumnName="num_com" />
+                <ScalarProperty Name="manufacturer" ColumnName="manufacturer" />
+                <ScalarProperty Name="warranty" ColumnName="warranty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customers">
+            <EntityTypeMapping TypeName="QuanLiQuanNetModel.customer">
+              <MappingFragment StoreEntitySet="customer">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="customer_name" ColumnName="customer_name" />
+                <ScalarProperty Name="remaining_time" ColumnName="remaining_time" />
+                <ScalarProperty Name="user_name" ColumnName="user_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employees">
+            <EntityTypeMapping TypeName="QuanLiQuanNetModel.employee">
+              <MappingFragment StoreEntitySet="employee">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="employee_name" ColumnName="employee_name" />
+                <ScalarProperty Name="date_of_birth" ColumnName="date_of_birth" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="image_nv" ColumnName="image_nv" />
+                <ScalarProperty Name="user_name" ColumnName="user_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="games">
+            <EntityTypeMapping TypeName="QuanLiQuanNetModel.game">
+              <MappingFragment StoreEntitySet="game">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="game_category_id" ColumnName="game_category_id" />
+                <ScalarProperty Name="game_name" ColumnName="game_name" />
+                <ScalarProperty Name="played_times" ColumnName="played_times" />
+                <ScalarProperty Name="path" ColumnName="path" />
+                <ScalarProperty Name="image_url" ColumnName="image_url" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="game_category">
+            <EntityTypeMapping TypeName="QuanLiQuanNetModel.game_category">
+              <MappingFragment StoreEntitySet="game_category">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="game_category_name" ColumnName="game_category_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="news">
+            <EntityTypeMapping TypeName="QuanLiQuanNetModel.news">
+              <MappingFragment StoreEntitySet="news">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="image_url" ColumnName="image_url" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="payments">
+            <EntityTypeMapping TypeName="QuanLiQuanNetModel.payment">
+              <MappingFragment StoreEntitySet="payment">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="total_bill" ColumnName="total_bill" />
+                <ScalarProperty Name="record_id" ColumnName="record_id" />
+                <ScalarProperty Name="payment_time" ColumnName="payment_time" />
+                <ScalarProperty Name="cash_given" ColumnName="cash_given" />
+                <ScalarProperty Name="cash_return" ColumnName="cash_return" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="payment_detail">
+            <EntityTypeMapping TypeName="QuanLiQuanNetModel.payment_detail">
+              <MappingFragment StoreEntitySet="payment_detail">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="payment_id" ColumnName="payment_id" />
+                <ScalarProperty Name="product_quantity" ColumnName="product_quantity" />
+                <ScalarProperty Name="total" ColumnName="total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="products">
+            <EntityTypeMapping TypeName="QuanLiQuanNetModel.product">
+              <MappingFragment StoreEntitySet="product">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="product_name" ColumnName="product_name" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="prices" ColumnName="prices" />
+                <ScalarProperty Name="image_url" ColumnName="image_url" />
+                <ScalarProperty Name="id_product_category" ColumnName="id_product_category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="records">
+            <EntityTypeMapping TypeName="QuanLiQuanNetModel.record">
+              <MappingFragment StoreEntitySet="record">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="computer_id" ColumnName="computer_id" />
+                <ScalarProperty Name="start_time" ColumnName="start_time" />
+                <ScalarProperty Name="end_time" ColumnName="end_time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_role">
+            <EntityTypeMapping TypeName="QuanLiQuanNetModel.user_role">
+              <MappingFragment StoreEntitySet="user_role">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="user_name" ColumnName="user_name" />
+                <ScalarProperty Name="role_name" ColumnName="role_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="QuanLiQuanNetModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="user_name" ColumnName="user_name" />
+                <ScalarProperty Name="user_password" ColumnName="user_password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="worktimes">
+            <EntityTypeMapping TypeName="QuanLiQuanNetModel.worktime">
+              <MappingFragment StoreEntitySet="worktime">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="employee_name" ColumnName="employee_name" />
+                <ScalarProperty Name="daywork" ColumnName="daywork" />
+                <ScalarProperty Name="start_time" ColumnName="start_time" />
+                <ScalarProperty Name="end_time" ColumnName="end_time" />
+                <ScalarProperty Name="salary" ColumnName="salary" />
+                <ScalarProperty Name="image_nv" ColumnName="image_nv" />
+                <ScalarProperty Name="user_name" ColumnName="user_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
