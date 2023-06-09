@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.dtgNV = new System.Windows.Forms.DataGridView();
-            this.btnDeleteNV = new System.Windows.Forms.Button();
-            this.btnEditNV = new System.Windows.Forms.Button();
-            this.btnAddNV = new System.Windows.Forms.Button();
-            this.txtFind = new System.Windows.Forms.TextBox();
             this.cid_employee = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cphone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cemployee_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cdate_of_birth = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cimage_url = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btnDeleteNV = new System.Windows.Forms.Button();
+            this.btnEditNV = new System.Windows.Forms.Button();
+            this.btnAddNV = new System.Windows.Forms.Button();
+            this.txtFind = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtgNV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,6 +61,47 @@
             this.dtgNV.RowTemplate.Height = 24;
             this.dtgNV.Size = new System.Drawing.Size(991, 432);
             this.dtgNV.TabIndex = 44;
+            this.dtgNV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgNV_CellContentClick);
+            // 
+            // cid_employee
+            // 
+            this.cid_employee.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cid_employee.DataPropertyName = "id_employee";
+            this.cid_employee.HeaderText = "ID";
+            this.cid_employee.MinimumWidth = 6;
+            this.cid_employee.Name = "cid_employee";
+            // 
+            // cphone
+            // 
+            this.cphone.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cphone.DataPropertyName = "phone";
+            this.cphone.HeaderText = "So Dien Thoai";
+            this.cphone.MinimumWidth = 6;
+            this.cphone.Name = "cphone";
+            // 
+            // cemployee_name
+            // 
+            this.cemployee_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cemployee_name.DataPropertyName = "employee_name";
+            this.cemployee_name.HeaderText = "Ten Nhan Vien";
+            this.cemployee_name.MinimumWidth = 6;
+            this.cemployee_name.Name = "cemployee_name";
+            // 
+            // cdate_of_birth
+            // 
+            this.cdate_of_birth.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cdate_of_birth.DataPropertyName = "date_of_birth";
+            this.cdate_of_birth.HeaderText = "Ngay Sinh";
+            this.cdate_of_birth.MinimumWidth = 6;
+            this.cdate_of_birth.Name = "cdate_of_birth";
+            // 
+            // cimage_url
+            // 
+            this.cimage_url.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cimage_url.DataPropertyName = "image_url";
+            this.cimage_url.HeaderText = "Ảnh";
+            this.cimage_url.MinimumWidth = 6;
+            this.cimage_url.Name = "cimage_url";
             // 
             // btnDeleteNV
             // 
@@ -109,46 +150,6 @@
             this.txtFind.Size = new System.Drawing.Size(222, 37);
             this.txtFind.TabIndex = 45;
             this.txtFind.TextChanged += new System.EventHandler(this.txtFind_TextChange);
-            // 
-            // cid_employee
-            // 
-            this.cid_employee.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cid_employee.DataPropertyName = "id_employee";
-            this.cid_employee.HeaderText = "ID";
-            this.cid_employee.MinimumWidth = 6;
-            this.cid_employee.Name = "cid_employee";
-            // 
-            // cphone
-            // 
-            this.cphone.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cphone.DataPropertyName = "phone";
-            this.cphone.HeaderText = "So Dien Thoai";
-            this.cphone.MinimumWidth = 6;
-            this.cphone.Name = "cphone";
-            // 
-            // cemployee_name
-            // 
-            this.cemployee_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cemployee_name.DataPropertyName = "employee_name";
-            this.cemployee_name.HeaderText = "Ten Nhan Vien";
-            this.cemployee_name.MinimumWidth = 6;
-            this.cemployee_name.Name = "cemployee_name";
-            // 
-            // cdate_of_birth
-            // 
-            this.cdate_of_birth.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cdate_of_birth.DataPropertyName = "date_of_birth";
-            this.cdate_of_birth.HeaderText = "Ngay Sinh";
-            this.cdate_of_birth.MinimumWidth = 6;
-            this.cdate_of_birth.Name = "cdate_of_birth";
-            // 
-            // cimage_url
-            // 
-            this.cimage_url.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cimage_url.DataPropertyName = "image_url";
-            this.cimage_url.HeaderText = "Ảnh";
-            this.cimage_url.MinimumWidth = 6;
-            this.cimage_url.Name = "cimage_url";
             // 
             // Form1
             // 
