@@ -32,6 +32,8 @@ namespace AD1
                 {
                     dtgNV.DataSource = db.employees.ToList();
                 }
+                MessageBox.Show("Them thanh cong");
+
             }
         }
 
@@ -108,6 +110,10 @@ namespace AD1
             db.SaveChanges();
             dtgNV.DataSource = db.employees.ToList();
         }
-     
+
+        private void dtgNV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
